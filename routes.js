@@ -3,6 +3,6 @@ const Controller = require('./controller');
 
 const { searchPage } = require('./utils');
 
-router.post("/", Controller.queryPage(req, res));
+router.post("/", (req, res) => Controller.queryPage(req, res));
 
 module.exports = router;

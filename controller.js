@@ -1,6 +1,6 @@
 const { searchPage } = require('./utils');
 module.exports = class Controller{
-    static async queryPage(req, res){
+    static queryPage = async (req, res) => {
         const { selector, url } = req.body;
         
         try{
