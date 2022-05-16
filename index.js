@@ -13,11 +13,11 @@ app.use(cors({
     origin: "*",
 }));
 
-async(() => {
+(async () => {
     try{
         await mongoose.connect(process.env.MONGO_URI);
         const server = await http.createServer(app);
-        await server.listen(PORT, () => console.log(`listening on port: ${port}`));
+        await server.listen(PORT, () => console.log(`listening on port ${PORT}`));
     } catch(error){
         if(error){
             throw error;
