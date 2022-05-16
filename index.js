@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const http = require('http');
+const path = require('path');
 
 const apiRoutes = require("./routes");
 
@@ -19,6 +20,11 @@ app.use(cors({
 }));
 
 app.use("/api/v1/", apiRoutes);
+
+app.use(express.static(path.join(__dirname, "..", "client", "build")));
+app.get("*", (_req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "build", "index.html"));
+});
 
 (async () => {
     try{
