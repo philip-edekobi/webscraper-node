@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const http = require('http');
 
+const apiRoutes = require("./routes");
+
 require('dotenv').config();
 const PORT = process.env.PORT || 5000;
 
@@ -12,6 +14,8 @@ app.use(express.json());
 app.use(cors({
     origin: "*",
 }));
+
+app.use("/api/v1/", apiRoutes);
 
 (async () => {
     try{
