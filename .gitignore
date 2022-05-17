@@ -2,11 +2,13 @@ node_modules
 
 .env
 
+/build/
+
 .env.*
 
-client/node_modules
+client_/node_modules
 
-client/build
+client_/build
 
-client/.env
+client_/.env
 
