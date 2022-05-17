@@ -21,16 +21,16 @@ app.use(cors({
 
 app.use("/api/v1/", apiRoutes);
 
-app.use(express.static(path.join(__dirname, "client_", "build")));
-app.get("*", (_req, res) => {
-    res.sendFile(path.join(__dirname, "client_", "build", "index.html"));
-});
-
 (async () => {
     try{
         await mongoose.connect(process.env.MONGO_URI);
         const server = await http.createServer(app);
         await server.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+        app.use(express.static(path.join(__dirname, "client_", "build")));
+        app.get("*", (_req, res) => {
+            res.sendFile(path.join(__dirname, "client_", "build", "index.html"));
+        });
     } catch(error){
         if(error){
             throw error;
